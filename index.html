@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hot Plate 2.0 | Home</title>
+    <style>
+        /* --- FONTS & VARS --- */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Oswald:wght@400;700&display=swap');
+        :root {
+            --bg-suede-green: #0B2E21; 
+            --slogan-red: #ff0000; --neon-red: #ff0000; 
+            --highlight-cream: #E6D2B5; --glow-cream: #E6D2B5; 
+            --marble-black: #1a1a1a; --marble-grey: #2c2c2c;
+            --text-white: #f5f5f5; --uber-green: #06C167;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-suede-green); color: var(--text-white); font-family: 'Montserrat', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
+        h1, h2, h3 { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex; justify-content: space-between; align-items: center; padding: 20px 5%;
+            position: fixed; width: 100%; top: 0; z-index: 1000;
+            background: rgba(11, 46, 33, 0.98); border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .nav-logo { font-size: 1.2rem; font-weight: 700; letter-spacing: 1px; z-index: 1001; }
+        .nav-logo span { color: var(--neon-red); }
+        
+        .nav-links { display: flex; align-items: center; }
+        .nav-links a { color: white; text-decoration: none; margin-left: 20px; font-size: 0.9rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--slogan-red); }
+        
+        /* HAMBURGER MENU ICON (Hidden on Desktop) */
+        .hamburger { display: none; font-size: 1.8rem; cursor: pointer; color: white; z-index: 1001; }
+
+        .btn-order {
+            background: transparent; border: 2px solid var(--slogan-red); color: var(--slogan-red);
+            padding: 10px 25px; font-weight: 600; border-radius: 50px; cursor: pointer; text-decoration: none; transition: all 0.3s ease;
+        }
+        .btn-order:hover { background: var(--slogan-red); color: white; box-shadow: 0 0 15px var(--slogan-red); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh; 
+            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
+            padding: 0 20px;
+            background: linear-gradient(rgba(11, 46, 33, 0.4), rgba(11, 46, 33, 0.6)), url('images/hero-bg.jpg'); 
+            background-size: cover; background-position: center; background-attachment: fixed; 
+        }
+        
+        .brand-title { font-size: 4rem; margin-bottom: 20px; line-height: 1; letter-spacing: 5px; text-shadow: 0 0 20px rgba(0,0,0,0.8); }
+        .text-hot { color: var(--neon-red); text-shadow: 0 0 10px var(--neon-red), 0 0 20px var(--neon-red); }
+        .text-plate { color: var(--highlight-cream); text-shadow: 0 0 10px var(--highlight-cream), 0 0 20px rgba(255,255,255,0.2); }
+        .hero-slogan { font-size: 4.5rem; color: var(--slogan-red); margin: 10px 0; letter-spacing: 2px; animation: textPulse 3s infinite alternate; }
+        @keyframes textPulse {
+            0% { text-shadow: 0 0 5px var(--slogan-red), 0 0 15px var(--glow-cream); }
+            100% { text-shadow: 0 0 10px var(--slogan-red), 0 0 30px var(--glow-cream), 0 0 50px var(--glow-cream); }
+        }
+
+        /* --- SECTIONS --- */
+        .menu-section, .about-section, .delivery-section, .specials-section { padding: 80px 5%; }
+        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 60px; }
+        .section-title span { border-bottom: 3px solid var(--slogan-red); padding-bottom: 10px; }
+        
+        .about-text { 
+            max-width: 900px; margin: 0 auto; text-align: center; line-height: 1.8; 
+            font-size: 1.1rem; color: #ddd; padding: 40px; border-radius: 12px; font-weight: 300;
+        }
+
+        .marble-surface {
+            background-color: var(--marble-black);
+            background-image: linear-gradient(135deg, var(--marble-black) 0%, var(--marble-grey) 50%, var(--marble-black) 100%);
+            border: 1px solid #333; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        /* --- FAN FAVORITES --- */
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; } /* Adjusted min-width for mobile */
+        .food-card { padding: 25px; border-radius: 12px; transition: transform 0.3s ease; }
+        
+        .food-img { 
+            width: 100%; height: 300px; object-fit: cover; 
+            border-radius: 8px; margin-bottom: 20px; border: 1px solid #333;
+            cursor: zoom-in; transition: opacity 0.3s;
+        }
+        
+        /* Mogodu Shift: 0.25% */
+        .shift-mogodu { object-position: center 0.25%; } 
+
+        .food-info h3 { font-size: 1.5rem; margin-bottom: 5px; }
+        .food-info p { font-size: 0.9rem; color: #aaa; margin-bottom: 15px; font-style: italic; }
+        .price-tag { font-family: 'Oswald', sans-serif; font-size: 1.4rem; color: var(--highlight-cream); font-weight: 700; display: block; margin-top: 10px; }
+
+        /* --- SPECIALS SECTION --- */
+        .specials-section {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/specials-bg.jpg');
+            background-size: cover; background-position: center; background-attachment: scroll; 
+        }
+        .specials-container { display: flex; flex-wrap: wrap; gap: 40px; align-items: center; justify-content: center; }
+        .specials-content { 
+            flex: 2; min-width: 300px; text-align: left; padding: 30px;
+            background: rgba(0,0,0,0.6); border-radius: 12px; border-left: 4px solid var(--slogan-red); backdrop-filter: blur(5px);
+        }
+        .specials-visuals { flex: 1; min-width: 300px; display: flex; justify-content: center; }
+        .specials-item {
+            width: 100%; max-width: 350px; aspect-ratio: 9 / 16;
+            border-radius: 12px; overflow: hidden; border: 2px solid var(--highlight-cream);
+            box-shadow: 0 0 20px rgba(0,0,0,0.5); background: #000;
+        }
+        .specials-item video { width: 100%; height: 100%; object-fit: cover; }
+
+        /* --- LIGHTBOX --- */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); overflow: auto; }
+        .modal-content { margin: auto; display: block; width: 90%; max-width: 800px; max-height: 80vh; object-fit: contain; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); border: 2px solid var(--highlight-cream); border-radius: 5px; }
+        .close { position: absolute; top: 20px; right: 25px; color: #f1f1f1; font-size: 40px; font-weight: bold; cursor: pointer; z-index: 2001; }
+
+        /* --- ANIMATIONS --- */
+        .hidden { opacity: 0; transform: translateY(50px); transition: all 1s ease; }
+        .show { opacity: 1; transform: translateY(0); }
+
+        /* --- FOOTER --- */
+        footer { padding: 60px 5%; background-color: #051610; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); }
+        .footer-address { font-size: 1.2rem; color: var(--highlight-cream); margin-bottom: 10px; font-family: 'Oswald', sans-serif; letter-spacing: 1px; }
+        .footer-phone { font-size: 1.1rem; color: #fff; margin-bottom: 20px; font-weight: bold; display: block; text-decoration: none; }
+        .social-link { color: var(--slogan-red); font-size: 1rem; text-decoration: none; border: 1px solid var(--slogan-red); padding: 10px 20px; border-radius: 5px; display: inline-block; margin: 0 10px; transition: all 0.3s ease; }
+        .map-container { margin: 30px auto; max-width: 600px; border: 2px solid var(--highlight-cream); border-radius: 12px; overflow: hidden; height: 250px; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
+        
+        /* --- MOBILE OPTIMIZATION --- */
+        @media (max-width: 768px) { 
+            .hamburger { display: block; }
+            
+            /* Mobile Navigation Dropdown */
+            .nav-links {
+                display: none; /* Hidden by default */
+                position: absolute; top: 100%; left: 0; width: 100%;
+                flex-direction: column; background-color: #0B2E21;
+                padding: 20px 0; border-bottom: 2px solid var(--slogan-red);
+            }
+            .nav-links.active { display: flex; } /* Shown via JS */
+            .nav-links a { margin: 10px 0; font-size: 1.2rem; }
+            .btn-order { margin-top: 15px; }
+
+            .brand-title { font-size: 2.5rem; } 
+            .hero-slogan { font-size: 2rem; } 
+            
+            /* Reduce padding on mobile */
+            .menu-section, .about-section, .delivery-section, .specials-section { padding: 50px 5%; }
+            .section-title { font-size: 2rem; margin-bottom: 40px; }
+            .about-text { font-size: 1rem; padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-logo"><span>HOT</span> PLATE 2.0</div>
+        
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+
+        <div class="nav-links" id="navLinks">
+            <a href="#about" onclick="toggleMenu()">Our Story</a>
+            <a href="menu.html">Full Menu</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="#specials" onclick="toggleMenu()">Specials</a>
+            <a href="#find-us" onclick="toggleMenu()">Find Us</a>
+            <a href="menu.html" class="btn-order">VIEW MENU</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1 class="brand-title hidden"><span class="text-hot">HOT</span> <span class="text-plate">PLATE 2.0</span></h1>
+        <h2 class="hero-slogan hidden">SEKuRGHT UKUDLA</h2>
+        <div style="margin-top: 60px;" class="hidden">
+            <a href="menu.html" class="btn-order" style="padding: 15px 40px; font-size: 1.2rem; background-color: rgba(0,0,0,0.5);">VIEW FULL MENU</a>
+        </div>
+    </section>
+
+    <section id="about" class="about-section hidden">
+        <h2 class="section-title"><span>OUR STORY</span></h2>
+        <div class="about-text marble-surface">
+            <p>
+                Hot Plate 2.0 brings the heart of South African cuisine to Sunninghill with a modern, vibrant twist. 
+                Our menu celebrates familiar local flavours through shareable plates, crafted with fresh ingredients 
+                and bold seasoning.
+                <br><br>
+                Enjoy a relaxed dining experience complemented by signature cocktails inspired by South African culture. 
+                With great food, warm service, and a dynamic atmosphere, Hot Plate 2.0 is your go-to destination 
+                for authentic taste and effortless comfort.
+            </p>
+        </div>
+    </section>
+
+    <section id="specials" class="specials-section hidden">
+        <h2 class="section-title"><span>WEEKLY VIBES</span></h2>
+        <div class="specials-container">
+            <div class="specials-content">
+                <h3 style="font-size: 2.5rem; color: var(--highlight-cream); margin-bottom: 10px;">AFTER WORK SPECIAL</h3>
+                <h4 style="font-size: 1.5rem; color: var(--slogan-red); margin-bottom: 20px;">EVERY THURSDAY</h4>
+                <div style="font-size: 1.1rem; line-height: 1.8; color: #ddd;">
+                    <p style="margin-bottom: 15px;"><strong>UNWIND AFTER A LONG DAY AT HOT PLATE!</strong><br>Enjoy <strong>Buy One, Get One Free</strong> on selected cocktails.</p>
+                    <p style="margin-bottom: 15px;">Paired with great music and authentic South African cuisine.</p>
+                    <p style="margin-bottom: 15px; color: var(--highlight-cream);"><strong>⏰ 5PM – 7PM</strong><br>SIP, SAVOUR, AND EASE INTO THE EVENING YOU’VE EARNED.</p>
+                    <p style="font-style: italic; color: #aaa;">"Where the weekend starts early."</p>
+                </div>
+                <br>
+                <a href="#find-us" class="btn-order">BOOK A TABLE</a>
+            </div>
+            
+            <div class="specials-visuals">
+                <div class="specials-item">
+                    <video autoplay muted loop playsinline>
+                        <source src="videos/cocktails.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="menu-section hidden">
+        <h2 class="section-title"><span>FAN FAVORITES</span></h2>
+        <div class="menu-grid">
+            <div class="food-card marble-surface hidden">
+                <img src="images/mogodu.jpg" alt="Mogodu Pot" class="food-img shift-mogodu" onclick="openModal(this)">
+                <div class="food-info">
+                    <h3>Mogodu</h3>
+                    <p>Traditional Tripe</p>
+                    <span class="price-tag">R130.00</span>
+                </div>
+            </div>
+            <div class="food-card marble-surface hidden">
+                <img src="images/hardbody.jpg" alt="Hardbody Chicken" class="food-img" onclick="openModal(this)">
+                <div class="food-info">
+                    <h3>Hardbody Chicken</h3>
+                    <p>Indigenous Chicken</p>
+                    <span class="price-tag">R145.00</span>
+                </div>
+            </div>
+            <div class="food-card marble-surface hidden">
+                <img src="images/cowhead.jpg" alt="Cow Head Skopo" class="food-img" onclick="openModal(this)">
+                <div class="food-info">
+                    <h3>Cow Head</h3>
+                    <p>Skopo</p>
+                    <span class="price-tag">R130.00</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="find-us" class="hidden">
+        <h2 class="section-title" style="font-size: 2rem;"><span>FIND US</span></h2>
+        <div class="footer-address">The Square Centre<br>Sunninghill, Sandton, 2157</div>
+        <a href="tel:0786856636" class="footer-phone">078-685-6636</a>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3584.098485678438!2d28.06456731502672!3d-26.031572983515367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e9573f0f7f9f8b5%3A0x4c0b0c0c0c0c0c0c!2sThe%20Square%20Shopping%20Centre%2C%20Sunninghill!5e0!3m2!1sen!2sza!4v1620000000000!5m2!1sen!2sza" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        <div style="margin: 30px 0;">
+            <a href="https://www.instagram.com/hotplate__2.0/" target="_blank" class="social-link">INSTAGRAM</a>
+            <a href="https://www.tiktok.com/@hotpplate_2_0?is_from_webapp=1&sender_device=pc" target="_blank" class="social-link">TIKTOK</a>
+        </div>
+        <p style="margin-top: 40px; font-size: 0.7rem; color: #444;">© 2024 Hot Plate 2.0. All Rights Reserved.</p>
+    </footer>
+
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">×</span>
+        <img class="modal-content" id="img01">
+    </div>
+
+    <script>
+        // Scroll Animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        });
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
+
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            var nav = document.getElementById("navLinks");
+            nav.classList.toggle("active");
+        }
+
+        // Lightbox
+        function openModal(element) {
+            var modal = document.getElementById("imageModal");
+            var modalImg = document.getElementById("img01");
+            modal.style.display = "block";
+            modalImg.src = element.src;
+        }
+        function closeModal() {
+            document.getElementById("imageModal").style.display = "none";
+        }
+        window.onclick = function(event) {
+            var modal = document.getElementById("imageModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>

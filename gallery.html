@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hot Plate 2.0 | Gallery</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Oswald:wght@400;700&display=swap');
+        :root {
+            --bg-suede-green: #0B2E21; 
+            --slogan-red: #ff0000; 
+            --highlight-cream: #E6D2B5; 
+            --marble-black: #1a1a1a; --marble-grey: #2c2c2c;
+            --text-white: #f5f5f5;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-suede-green); color: var(--text-white); font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
+        
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background: rgba(11, 46, 33, 0.95); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .nav-logo { font-size: 1.2rem; font-weight: 700; letter-spacing: 1px; color:white; text-decoration:none; }
+        .nav-logo span { color: var(--slogan-red); }
+        .back-link { color: var(--highlight-cream); text-decoration: none; border: 1px solid var(--highlight-cream); padding: 8px 20px; border-radius: 20px; transition: 0.3s; }
+
+        .header-title { text-align: center; padding: 60px 20px; font-family: 'Oswald', sans-serif; font-size: 3rem; text-transform: uppercase; }
+        .header-title span { border-bottom: 4px solid var(--slogan-red); }
+
+        .gallery-container { padding: 20px 5%; column-count: 5; column-gap: 15px; }
+        .gallery-item {
+            display: inline-block; width: 100%; margin-bottom: 15px;
+            border-radius: 8px; overflow: hidden; border: 1px solid #333;
+            transition: transform 0.3s ease; 
+        }
+        .gallery-item:hover { transform: scale(1.02); border-color: var(--slogan-red); }
+        
+        /* Image is the clickable element now */
+        .gallery-item img { 
+            width: 100%; height: auto; display: block; cursor: pointer; 
+        }
+
+        /* MODAL */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.95); overflow: auto; }
+        .modal-content { margin: auto; display: block; width: auto; max-width: 90%; max-height: 90vh; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); border: 2px solid var(--highlight-cream); border-radius: 5px; }
+        .close { position: absolute; top: 20px; right: 30px; color: #f1f1f1; font-size: 50px; font-weight: bold; cursor: pointer; z-index: 2001; }
+
+        @media (max-width: 1200px) { .gallery-container { column-count: 3; } }
+        @media (max-width: 768px) { .gallery-container { column-count: 2; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="nav-logo"><span>HOT</span> PLATE 2.0</a>
+        <a href="index.html" class="back-link">← BACK HOME</a>
+    </nav>
+    <h1 class="header-title"><span>THE VIBE</span></h1>
+
+    <div class="gallery-container">
+        <div class="gallery-item"><img src="images/gallery1.jpg" onclick="openModal(this)" alt="Gallery 1"></div>
+        <div class="gallery-item"><img src="images/gallery2.jpg" onclick="openModal(this)" alt="Gallery 2"></div>
+        <div class="gallery-item"><img src="images/gallery3.jpg" onclick="openModal(this)" alt="Gallery 3"></div>
+        <div class="gallery-item"><img src="images/gallery4.jpg" onclick="openModal(this)" alt="Gallery 4"></div>
+        <div class="gallery-item"><img src="images/gallery5.jpg" onclick="openModal(this)" alt="Gallery 5"></div>
+        <div class="gallery-item"><img src="images/gallery6.jpg" onclick="openModal(this)" alt="Gallery 6"></div>
+        <div class="gallery-item"><img src="images/gallery7.jpg" onclick="openModal(this)" alt="Gallery 7"></div>
+        <div class="gallery-item"><img src="images/gallery8.jpg" onclick="openModal(this)" alt="Gallery 8"></div>
+        <div class="gallery-item"><img src="images/gallery9.jpg" onclick="openModal(this)" alt="Gallery 9"></div>
+        <div class="gallery-item"><img src="images/gallery10.jpg" onclick="openModal(this)" alt="Gallery 10"></div>
+        <div class="gallery-item"><img src="images/gallery11.jpg" onclick="openModal(this)" alt="Gallery 11"></div>
+        <div class="gallery-item"><img src="images/gallery12.jpg" onclick="openModal(this)" alt="Gallery 12"></div>
+        <div class="gallery-item"><img src="images/gallery13.jpg" onclick="openModal(this)" alt="Gallery 13"></div>
+        <div class="gallery-item"><img src="images/gallery14.jpg" onclick="openModal(this)" alt="Gallery 14"></div>
+        <div class="gallery-item"><img src="images/gallery15.jpg" onclick="openModal(this)" alt="Gallery 15"></div>
+        <div class="gallery-item"><img src="images/gallery16.jpg" onclick="openModal(this)" alt="Gallery 16"></div>
+        <div class="gallery-item"><img src="images/gallery17.jpg" onclick="openModal(this)" alt="Gallery 17"></div>
+        <div class="gallery-item"><img src="images/gallery18.jpg" onclick="openModal(this)" alt="Gallery 18"></div>
+        <div class="gallery-item"><img src="images/gallery19.jpg" onclick="openModal(this)" alt="Gallery 19"></div>
+        <div class="gallery-item"><img src="images/gallery20.jpg" onclick="openModal(this)" alt="Gallery 20"></div>
+        <div class="gallery-item"><img src="images/gallery21.jpg" onclick="openModal(this)" alt="Gallery 21"></div>
+        <div class="gallery-item"><img src="images/gallery22.jpg" onclick="openModal(this)" alt="Gallery 22"></div>
+        <div class="gallery-item"><img src="images/gallery23.jpg" onclick="openModal(this)" alt="Gallery 23"></div>
+        <div class="gallery-item"><img src="images/gallery24.jpg" onclick="openModal(this)" alt="Gallery 24"></div>
+        <div class="gallery-item"><img src="images/gallery25.jpg" onclick="openModal(this)" alt="Gallery 25"></div>
+        <div class="gallery-item"><img src="images/gallery26.jpg" onclick="openModal(this)" alt="Gallery 26"></div>
+    </div>
+
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">×</span>
+        <img class="modal-content" id="img01">
+    </div>
+
+    <script>
+        function openModal(element) {
+            var modal = document.getElementById("imageModal");
+            var modalImg = document.getElementById("img01");
+            modal.style.display = "block";
+            modalImg.src = element.src;
+        }
+        function closeModal() { document.getElementById("imageModal").style.display = "none"; }
+        window.onclick = function(event) { if (event.target == document.getElementById("imageModal")) { closeModal(); } }
+    </script>
+</body>
+</html>

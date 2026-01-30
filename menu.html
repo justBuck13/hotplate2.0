@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hot Plate 2.0 | Full Menu</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Oswald:wght@400;700&display=swap');
+        :root {
+            --bg-suede-green: #0B2E21; 
+            --slogan-red: #ff0000; --neon-red: #ff0000; 
+            --highlight-cream: #E6D2B5; 
+            --marble-black: #1a1a1a; --marble-grey: #2c2c2c;
+            --text-white: #f5f5f5;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-suede-green); color: var(--text-white); font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
+        h1, h2, h3 { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
+
+        /* FULL SCREEN VIDEO */
+        #bg-video {
+            position: fixed; right: 0; bottom: 0; 
+            min-width: 100%; min-height: 100%;
+            width: auto; height: auto;
+            object-fit: cover; /* Covers entire screen */
+            z-index: -1; 
+            opacity: 0.4;
+        }
+        
+        .marble-surface { background-color: rgba(26, 26, 26, 0.9); border: 1px solid #333; padding: 25px; border-radius: 12px; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background: rgba(11, 46, 33, 0.95); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .nav-logo { font-size: 1.2rem; font-weight: 700; color: white; text-decoration: none; }
+        .nav-logo span { color: var(--neon-red); }
+        .back-link { color: var(--highlight-cream); text-decoration: none; border: 1px solid var(--highlight-cream); padding: 8px 20px; border-radius: 20px; transition: 0.3s; }
+        .back-link:hover { background: var(--highlight-cream); color: #000; }
+
+        .page-header { text-align: center; padding: 100px 20px 50px; }
+        .page-title { font-size: 3rem; margin-bottom: 10px; font-family: 'Oswald', sans-serif; text-shadow: 0 0 10px #000; }
+        .page-title span { border-bottom: 4px solid var(--slogan-red); }
+
+        .menu-category { padding: 40px 5%; max-width: 1200px; margin: 0 auto; }
+        .category-title { color: var(--highlight-cream); font-size: 2rem; margin-bottom: 30px; border-left: 5px solid var(--slogan-red); padding-left: 20px; text-shadow: 2px 2px 4px #000; font-family: 'Oswald', sans-serif; }
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .item-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .item-name { font-weight: 600; color: #eee; }
+        .item-price { font-family: 'Oswald', sans-serif; color: var(--highlight-cream); font-weight: 700; }
+
+        @media (max-width: 768px) { .page-title { font-size: 2.5rem; } }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop playsinline id="bg-video">
+        <source src="videos/menu-bg.mp4" type="video/mp4">
+    </video>
+    
+    <nav>
+        <a href="index.html" class="nav-logo"><span>HOT</span> PLATE 2.0</a>
+        <a href="index.html" class="back-link">← BACK HOME</a>
+    </nav>
+    <header class="page-header">
+        <h1 class="page-title"><span>FULL MENU</span></h1>
+        <p style="color: #ddd; font-weight: bold;">Food & Drinks</p>
+    </header>
+    
+    <section class="menu-category">
+        <h2 class="category-title">TRADITIONAL MEALS</h2>
+        <div class="menu-grid">
+            <div class="marble-surface">
+                <div class="item-row"><span class="item-name">Mogodu (Tripe)</span><span class="item-price">R130</span></div>
+                <div class="item-row"><span class="item-name">Cow Head (Skopo)</span><span class="item-price">R130</span></div>
+                <div class="item-row"><span class="item-name">Cow Heels (Tlhako)</span><span class="item-price">R140</span></div>
+                <div class="item-row"><span class="item-name">Hardbody Chicken</span><span class="item-price">R145</span></div>
+                <div class="item-row"><span class="item-name">Pork Leg</span><span class="item-price">R180</span></div>
+                <div class="item-row"><span class="item-name">Halfskop</span><span class="item-price">R195</span></div>
+                <div class="item-row"><span class="item-name">Full Skop</span><span class="item-price">R250</span></div>
+                <div class="item-row"><span class="item-name">Lamb Trotter</span><span class="item-price">R220</span></div>
+                <div class="item-row"><span class="item-name">Marapo (Bones)</span><span class="item-price">R110</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="menu-category">
+        <h2 class="category-title">HOT PLATE MIXES (PLATTERS)</h2>
+        <div class="menu-grid">
+            <div class="marble-surface">
+                <h3 style="color:var(--slogan-red); margin-bottom:10px;">Mix 1</h3>
+                <p style="font-size:0.9rem; color:#ccc; margin-bottom:10px;">Mogodu, Cow Head, Cow Heels, Chicken Feet, Malana.</p>
+                <span class="item-price" style="font-size:1.5rem;">R400</span>
+            </div>
+            <div class="marble-surface">
+                <h3 style="color:var(--slogan-red); margin-bottom:10px;">Mix 2</h3>
+                <p style="font-size:0.9rem; color:#ccc; margin-bottom:10px;">Hardbody Chicken, Gizzard, Cow Head.</p>
+                <span class="item-price" style="font-size:1.5rem;">R380</span>
+            </div>
+            <div class="marble-surface">
+                <h3 style="color:var(--slogan-red); margin-bottom:10px;">Mix 3</h3>
+                <p style="font-size:0.9rem; color:#ccc; margin-bottom:10px;">Mogodu, Marapo, Chicken Feet, Lamb Trotter, Gizzard.</p>
+                <span class="item-price" style="font-size:1.5rem;">R320</span>
+            </div>
+        </div>
+    </section>
+
+    <div style="text-align:center; margin: 80px 0 40px;">
+        <h2 class="page-title"><span style="border-color: #fff;">DRINKS MENU</span></h2>
+    </div>
+
+    <section class="menu-category">
+        <h2 class="category-title">CHAMPAGNE & MCC</h2>
+        <div class="menu-grid">
+            <div class="marble-surface">
+                <div class="item-row"><span class="item-name">Moet Nectar Imperial</span><span class="item-price">R2100</span></div>
+                <div class="item-row"><span class="item-name">Moet Ice Imperial</span><span class="item-price">R2200</span></div>
+                <div class="item-row"><span class="item-name">Veuve Clicquot Brut</span><span class="item-price">R1950</span></div>
+                <div class="item-row"><span class="item-name">Veuve Clicquot Rich</span><span class="item-price">R2100</span></div>
+                <div class="item-row"><span class="item-name">Ice Tropez</span><span class="item-price">R185</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="menu-category">
+        <h2 class="category-title">COGNAC</h2>
+        <div class="menu-grid">
+            <div class="marble-surface">
+                <div class="item-row"><span class="item-name">Hennessy VS</span><span class="item-price">R1300</span></div>
+                <div class="item-row"><span class="item-name">Hennessy VSOP</span><span class="item-price">R2200</span></div>
+                <div class="item-row"><span class="item-name">Hennessy XO</span><span class="item-price">R6300</span></div>
+                <div class="item-row"><span class="item-name">Remy Martin 1738</span><span class="item-price">R3000</span></div>
+                <div class="item-row"><span class="item-name">D'usse VSOP</span><span class="item-price">R2200</span></div>
+                <div class="item-row"><span class="item-name">Bisquit & Dubouche</span><span class="item-price">R2000</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="menu-category">
+        <h2 class="category-title">WHISKEY</h2>
+        <div class="menu-grid">
+            <div class="marble-surface">
+                <div class="item-row"><span class="item-name">Glenfiddich 12yr</span><span class="item-price">R1600</span></div>
+                <div class="item-row"><span class="item-name">Glenfiddich 15yr</span><span class="item-price">R2300</span></div>
+                <div class="item-row"><span class="item-name">Glenfiddich 18yr</span><span class="item-price">R3800</span></div>
+                <div class="item-row"><span class="item-name">Jameson Original</span><span class="item-price">R950</span></div>
+                <div class="item-row"><span class="item-name">Jameson Gold</span><span class="item-price">R1300</span></div>
+                <div class="item-row"><span class="item-name">Johnnie Walker Black</span><span class="item-price">R1100</span></div>
+                <div class="item-row"><span class="item-name">Johnnie Walker Gold</span><span class="item-price">R1950</span></div>
+                <div class="item-row"><span class="item-name">Glenmorangie 10yr</span><span class="item-price">R1500</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="menu-category">
+        <h2 class="category-title">GIN, VODKA & TEQUILA</h2>
+        <div class="menu-grid">
+            <div class="marble-surface">
+                <h3 style="color:#aaa; margin-bottom:15px;">GIN</h3>
+                <div class="item-row"><span class="item-name">Tanqueray</span><span class="item-price">R800</span></div>
+                <div class="item-row"><span class="item-name">Bombay Sapphire</span><span class="item-price">R850</span></div>
+                <div class="item-row"><span class="item-name">Hendrick's</span><span class="item-price">R1250</span></div>
+                <div class="item-row"><span class="item-name">Bulldog</span><span class="item-price">R850</span></div>
+            </div>
+            <div class="marble-surface">
+                <h3 style="color:#aaa; margin-bottom:15px;">VODKA</h3>
+                <div class="item-row"><span class="item-name">Ciroc</span><span class="item-price">R1100</span></div>
+                <div class="item-row"><span class="item-name">Belvedere</span><span class="item-price">R1100</span></div>
+                <div class="item-row"><span class="item-name">Cruz Vintage</span><span class="item-price">R750</span></div>
+                <div class="item-row"><span class="item-name">Grey Goose</span><span class="item-price">R1200</span></div>
+            </div>
+             <div class="marble-surface">
+                <h3 style="color:#aaa; margin-bottom:15px;">TEQUILA</h3>
+                <div class="item-row"><span class="item-name">Don Julio</span><span class="item-price">R2000</span></div>
+                <div class="item-row"><span class="item-name">Patron</span><span class="item-price">R1500</span></div>
+                <div class="item-row"><span class="item-name">Jose Cuervo</span><span class="item-price">R800</span></div>
+                <div class="item-row"><span class="item-name">1800 Coconut</span><span class="item-price">R1400</span></div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="text-align:center; padding:50px; color:#666; font-size:0.8rem;">
+        © 2024 Hot Plate 2.0. All Rights Reserved.
+    </footer>
+</body>
+</html>
