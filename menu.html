@@ -26,12 +26,11 @@
         
         .marble-surface { background-color: rgba(26, 26, 26, 0.95); border: 1px solid #333; padding: 25px; border-radius: 12px; }
         
-        /* NAVIGATION (Updated to match Index) */
+        /* NAVIGATION */
         nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: rgba(11, 46, 33, 0.95); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255,255,255,0.1); }
         .nav-logo { font-size: 1.1rem; font-weight: 700; color: white; text-decoration: none; z-index: 1002; position: relative; }
         .nav-logo span { color: var(--neon-red); }
         
-        /* Nav Links / Hamburger logic from Index */
         .nav-links { display: flex; align-items: center; }
         .nav-links a { color: white; text-decoration: none; margin-left: 20px; font-size: 0.9rem; transition: 0.3s; }
         .nav-links a:hover { color: var(--slogan-red); }
@@ -55,6 +54,7 @@
             .page-title { font-size: 2.2rem; }
             .category-title { font-size: 1.6rem; }
             .hamburger { display: block; }
+            /* Full Screen Mobile Menu */
             .nav-links {
                 display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; 
                 flex-direction: column; justify-content: center; background-color: rgba(11, 46, 33, 0.98); 
@@ -74,9 +74,9 @@
         <a href="index.html" class="nav-logo"><span>HOT</span> PLATE 2.0</a>
         <div class="hamburger" onclick="toggleMenu()">☰</div>
         <div class="nav-links" id="navLinks">
-            <a href="index.html" onclick="toggleMenu()">Home</a>
+            <a href="index.html">Home</a>
             <a href="gallery.html">Gallery</a>
-            <a href="index.html#find-us" onclick="toggleMenu()">Find Us</a>
+            <a href="index.html#find-us">Find Us</a>
         </div>
     </nav>
 
@@ -110,21 +110,21 @@
             <div class="marble-surface">
                 <h3 style="color:var(--slogan-red); margin-bottom:10px;">Mix 1</h3>
                 <p style="font-size:0.9rem; color:#ccc; margin-bottom:10px;">
-                    Mogodu, Cow Head, Cow Heels, Chicken feet with Malana/Gizzards, Malana.
+                    Mogodu, Cow Head, Cow Heels, Chicken feet with Malana\Gizzards, Malana.
                 </p>
                 <span class="item-price" style="font-size:1.5rem;">R400</span>
             </div>
             <div class="marble-surface">
                 <h3 style="color:var(--slogan-red); margin-bottom:10px;">Mix 2</h3>
                 <p style="font-size:0.9rem; color:#ccc; margin-bottom:10px;">
-                    Mogodu, Hardbody Chicken, Marapo, Gizzard, Cow Head.
+                    Mogodu, Hardbody Chicken, Marapo, Gizzard, Cow head.
                 </p>
                 <span class="item-price" style="font-size:1.5rem;">R380</span>
             </div>
             <div class="marble-surface">
                 <h3 style="color:var(--slogan-red); margin-bottom:10px;">Mix 3</h3>
                 <p style="font-size:0.9rem; color:#ccc; margin-bottom:10px;">
-                    Chicken feet with Malana/Gizzards, Lamb Trotter, Gizzard, Mogodu.
+                    Chicken feet with Malana/Gizzards, lamb trotter, Gizzard, Mogodu.
                 </p>
                 <span class="item-price" style="font-size:1.5rem;">R320</span>
             </div>
