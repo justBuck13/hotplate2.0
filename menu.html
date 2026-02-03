@@ -35,7 +35,9 @@
         .page-title span { border-bottom: 4px solid var(--slogan-red); }
 
         .menu-category { padding: 40px 5%; max-width: 1200px; margin: 0 auto; }
-        .category-title { color: var(--highlight-cream); font-size: 2rem; margin-bottom: 30px; border-left: 5px solid var(--slogan-red); padding-left: 20px; text-shadow: 2px 2px 4px #000; font-family: 'Oswald', sans-serif; }
+        .category-title { color: var(--highlight-cream); font-size: 2rem; margin-bottom: 5px; border-left: 5px solid var(--slogan-red); padding-left: 20px; text-shadow: 2px 2px 4px #000; font-family: 'Oswald', sans-serif; }
+        .category-subtitle { color: #aaa; font-size: 0.9rem; margin-bottom: 30px; padding-left: 25px; font-style: italic; }
+        
         .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
         .item-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .item-name { font-weight: 600; color: #eee; }
@@ -59,6 +61,7 @@
     
     <section class="menu-category">
         <h2 class="category-title">TRADITIONAL MEALS</h2>
+        <p class="category-subtitle">Served with choices of starch</p>
         <div class="menu-grid">
             <div class="marble-surface">
                 <div class="item-row"><span class="item-name">Mogodu (Tripe)</span><span class="item-price">R130</span></div>
@@ -68,7 +71,7 @@
                 <div class="item-row"><span class="item-name">Hardbody Chicken</span><span class="item-price">R145</span></div>
                 <div class="item-row"><span class="item-name">Pork Leg</span><span class="item-price">R180</span></div>
                 <div class="item-row"><span class="item-name">Halfskop</span><span class="item-price">R195</span></div>
-                <div class="item-row"><span class="item-name">Full Skop</span><span class="item-price">R250</span></div> <div class="item-row"><span class="item-name">Lamb Trotter</span><span class="item-price">R220</span></div>
+                <div class="item-row"><span class="item-name">Lamb Trotter</span><span class="item-price">R220</span></div>
                 <div class="item-row"><span class="item-name">Marapo (Meaty Bones)</span><span class="item-price">R110</span></div>
             </div>
         </div>
@@ -76,15 +79,28 @@
 
     <section class="menu-category">
         <h2 class="category-title">HOT PLATE MIXES (PLATTERS)</h2>
+        <p class="category-subtitle">Served with 2 choices of starch</p>
         <div class="menu-grid">
             <div class="marble-surface">
-                <h3 style="color:var(--slogan-red); margin-bottom:10px;">Mix 1</h3><p style="font-size:0.9rem; color:#ccc; margin-bottom:10px;">Mogodu, Cow Head, Cow Heels, Chicken Feet, Malana.</p><span class="item-price" style="font-size:1.5rem;">R400</span>
+                <h3 style="color:var(--slogan-red); margin-bottom:10px;">Mix 1</h3>
+                <p style="font-size:0.9rem; color:#ccc; margin-bottom:10px;">
+                    Mogodu, Cow Head, Cow Heels, Chicken feet with malana/Gizzards, Malana.
+                </p>
+                <span class="item-price" style="font-size:1.5rem;">R400</span>
             </div>
             <div class="marble-surface">
-                <h3 style="color:var(--slogan-red); margin-bottom:10px;">Mix 2</h3><p style="font-size:0.9rem; color:#ccc; margin-bottom:10px;">Hardbody Chicken, Gizzard, Cow Head.</p><span class="item-price" style="font-size:1.5rem;">R380</span>
+                <h3 style="color:var(--slogan-red); margin-bottom:10px;">Mix 2</h3>
+                <p style="font-size:0.9rem; color:#ccc; margin-bottom:10px;">
+                    Hardbody Chicken, Gizzard, Cow Head.
+                </p>
+                <span class="item-price" style="font-size:1.5rem;">R380</span>
             </div>
             <div class="marble-surface">
-                <h3 style="color:var(--slogan-red); margin-bottom:10px;">Mix 3</h3><p style="font-size:0.9rem; color:#ccc; margin-bottom:10px;">Mogodu, Marapo, Chicken Feet, Lamb Trotter, Gizzard.</p><span class="item-price" style="font-size:1.5rem;">R320</span>
+                <h3 style="color:var(--slogan-red); margin-bottom:10px;">Mix 3</h3>
+                <p style="font-size:0.9rem; color:#ccc; margin-bottom:10px;">
+                    Mogodu, Marapo, Chicken feet with malana/Gizzards, Lamb Trotter, Gizzard.
+                </p>
+                <span class="item-price" style="font-size:1.5rem;">R320</span>
             </div>
         </div>
     </section>
