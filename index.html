@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hot Plate 2.0 | Home</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css">
     <style>
         /* --- FONTS & VARS --- */
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Oswald:wght@400;700&display=swap');
@@ -31,7 +32,6 @@
         .nav-links a { color: white; text-decoration: none; margin-left: 20px; font-size: 0.9rem; transition: 0.3s; }
         .nav-links a:hover { color: var(--slogan-red); }
         
-        /* HAMBURGER ICON */
         .hamburger { display: none; font-size: 1.8rem; cursor: pointer; color: white; z-index: 1002; position: relative; }
 
         .btn-order {
@@ -40,12 +40,13 @@
         }
         .btn-order:hover { background: var(--slogan-red); color: white; box-shadow: 0 0 15px var(--slogan-red); }
 
-        /* --- HERO SECTION --- */
+        /* --- HERO SECTION (UPDATED TO WEBP) --- */
         .hero {
             height: 100vh; 
             display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
             padding: 0 20px;
-            background: linear-gradient(rgba(11, 46, 33, 0.4), rgba(11, 46, 33, 0.6)), url('images/hero-bg.jpg'); 
+            /* CHANGE: hero-bg.webp */
+            background: linear-gradient(rgba(11, 46, 33, 0.4), rgba(11, 46, 33, 0.6)), url('images/hero-bg.webp'); 
             background-size: cover; background-position: center; background-attachment: fixed; 
         }
         
@@ -76,7 +77,7 @@
 
         /* --- FAN FAVORITES --- */
         .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .food-card { padding: 25px; border-radius: 12px; transition: transform 0.3s ease; }
+        .food-card { padding: 25px; border-radius: 12px; transition: transform 0.3s ease; text-decoration: none; display: block; color: var(--text-white); }
         
         .food-img { 
             width: 100%; height: 300px; object-fit: cover; 
@@ -91,9 +92,10 @@
         .food-info p { font-size: 0.9rem; color: #aaa; margin-bottom: 15px; font-style: italic; }
         .price-tag { font-family: 'Oswald', sans-serif; font-size: 1.4rem; color: var(--highlight-cream); font-weight: 700; display: block; margin-top: 10px; }
 
-        /* --- SPECIALS SECTION --- */
+        /* --- SPECIALS SECTION (UPDATED TO WEBP) --- */
         .specials-section {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/specials-bg.jpg');
+            /* CHANGE: specials-bg.webp */
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/specials-bg.webp');
             background-size: cover; background-position: center; background-attachment: scroll; 
         }
         .specials-container { display: flex; flex-wrap: wrap; gap: 40px; align-items: center; justify-content: center; }
@@ -109,10 +111,8 @@
         }
         .specials-item video { width: 100%; height: 100%; object-fit: cover; }
 
-        /* --- LIGHTBOX --- */
-        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); overflow: auto; }
-        .modal-content { margin: auto; display: block; width: 90%; max-width: 800px; max-height: 80vh; object-fit: contain; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); border: 2px solid var(--highlight-cream); border-radius: 5px; }
-        .close { position: absolute; top: 20px; right: 25px; color: #f1f1f1; font-size: 40px; font-weight: bold; cursor: pointer; z-index: 2001; }
+        /* lightGallery Backdrop */
+        .lg-backdrop { background-color: rgba(0,0,0,0.95) !important; }
 
         /* --- ANIMATIONS --- */
         .hidden { opacity: 0; transform: translateY(50px); transition: all 1s ease; }
@@ -125,34 +125,22 @@
         .social-link { color: var(--slogan-red); font-size: 1rem; text-decoration: none; border: 1px solid var(--slogan-red); padding: 10px 20px; border-radius: 5px; display: inline-block; margin: 0 10px; transition: all 0.3s ease; }
         .map-container { margin: 30px auto; max-width: 600px; border: 2px solid var(--highlight-cream); border-radius: 12px; overflow: hidden; height: 250px; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
         
-        /* --- MOBILE OPTIMIZATION (TWEAKED) --- */
+        /* --- MOBILE OPTIMIZATION --- */
         @media (max-width: 768px) { 
             .hamburger { display: block; }
-            
-            /* Full Screen Mobile Menu */
             .nav-links {
-                display: none; /* Hidden */
-                position: fixed; /* Fixed to screen */
-                top: 0; left: 0; width: 100%; height: 100vh; /* Full Height */
-                flex-direction: column; 
-                justify-content: center; /* Center items vertically */
-                background-color: rgba(11, 46, 33, 0.98); /* Solid dark BG */
+                display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; 
+                flex-direction: column; justify-content: center; background-color: rgba(11, 46, 33, 0.98); 
                 padding: 0; z-index: 1000;
             }
             .nav-links.active { display: flex; }
-            .nav-links a { margin: 15px 0; font-size: 1.5rem; font-weight: 600; } /* Larger Touch Targets */
+            .nav-links a { margin: 15px 0; font-size: 1.5rem; font-weight: 600; }
             .btn-order { margin-top: 25px; transform: scale(1.2); }
-
-            /* Text Sizing Safety */
             .brand-title { font-size: 2.8rem; } 
             .hero-slogan { font-size: 1.8rem; } 
-            
-            /* Tighter Spacing */
             .menu-section, .about-section, .delivery-section, .specials-section { padding: 40px 5%; }
             .section-title { font-size: 2rem; margin-bottom: 30px; }
             .about-text { font-size: 1rem; padding: 25px; text-align: left; }
-
-            /* Reorder Specials: Video ON TOP of Text */
             .specials-container { flex-direction: column-reverse; gap: 30px; }
             .specials-content { min-width: 100%; border-left: none; border-top: 4px solid var(--slogan-red); }
             .specials-visuals { min-width: 100%; }
@@ -163,9 +151,7 @@
 
     <nav>
         <div class="nav-logo"><span>HOT</span> PLATE 2.0</div>
-        
         <div class="hamburger" onclick="toggleMenu()">☰</div>
-
         <div class="nav-links" id="navLinks">
             <a href="#about" onclick="toggleMenu()">Our Story</a>
             <a href="menu.html">Full Menu</a>
@@ -187,15 +173,7 @@
     <section id="about" class="about-section hidden">
         <h2 class="section-title"><span>OUR STORY</span></h2>
         <div class="about-text marble-surface">
-            <p>
-                Hot Plate 2.0 brings the heart of South African cuisine to Sunninghill with a modern, vibrant twist. 
-                Our menu celebrates familiar local flavours through shareable plates, crafted with fresh ingredients 
-                and bold seasoning.
-                <br><br>
-                Enjoy a relaxed dining experience complemented by signature cocktails inspired by South African culture. 
-                With great food, warm service, and a dynamic atmosphere, Hot Plate 2.0 is your go-to destination 
-                for authentic taste and effortless comfort.
-            </p>
+            <p>Hot Plate 2.0 brings the heart of South African cuisine to Sunninghill with a modern, vibrant twist. Our menu celebrates familiar local flavours through shareable plates, crafted with fresh ingredients and bold seasoning.<br><br>Enjoy a relaxed dining experience complemented by signature cocktails inspired by South African culture. With great food, warm service, and a dynamic atmosphere, Hot Plate 2.0 is your go-to destination for authentic taste and effortless comfort.</p>
         </div>
     </section>
 
@@ -214,10 +192,9 @@
                 <br>
                 <a href="#find-us" class="btn-order">BOOK A TABLE</a>
             </div>
-            
             <div class="specials-visuals">
                 <div class="specials-item">
-                    <video autoplay muted loop playsinline>
+                    <video autoplay muted loop playsinline loading="lazy">
                         <source src="videos/cocktails.mp4" type="video/mp4">
                     </video>
                 </div>
@@ -227,31 +204,19 @@
 
     <section class="menu-section hidden">
         <h2 class="section-title"><span>FAN FAVORITES</span></h2>
-        <div class="menu-grid">
-            <div class="food-card marble-surface hidden">
-                <img src="images/mogodu.jpg" alt="Mogodu Pot" class="food-img shift-mogodu" onclick="openModal(this)">
-                <div class="food-info">
-                    <h3>Mogodu</h3>
-                    <p>Traditional Tripe</p>
-                    <span class="price-tag">R130.00</span>
-                </div>
-            </div>
-            <div class="food-card marble-surface hidden">
-                <img src="images/hardbody.jpg" alt="Hardbody Chicken" class="food-img" onclick="openModal(this)">
-                <div class="food-info">
-                    <h3>Hardbody Chicken</h3>
-                    <p>Indigenous Chicken</p>
-                    <span class="price-tag">R145.00</span>
-                </div>
-            </div>
-            <div class="food-card marble-surface hidden">
-                <img src="images/cowhead.jpg" alt="Cow Head Skopo" class="food-img" onclick="openModal(this)">
-                <div class="food-info">
-                    <h3>Cow Head</h3>
-                    <p>Skopo</p>
-                    <span class="price-tag">R130.00</span>
-                </div>
-            </div>
+        <div class="menu-grid" id="fav-gallery">
+            <a href="images/mogodu.webp" class="food-card marble-surface hidden">
+                <img src="images/mogodu.webp" alt="Mogodu Pot" class="food-img shift-mogodu" loading="lazy">
+                <div class="food-info"><h3>Mogodu</h3><p>Traditional Tripe</p><span class="price-tag">R130.00</span></div>
+            </a>
+            <a href="images/hardbody.webp" class="food-card marble-surface hidden">
+                <img src="images/hardbody.webp" alt="Hardbody Chicken" class="food-img" loading="lazy">
+                <div class="food-info"><h3>Hardbody Chicken</h3><p>Indigenous Chicken</p><span class="price-tag">R145.00</span></div>
+            </a>
+            <a href="images/cowhead.webp" class="food-card marble-surface hidden">
+                <img src="images/cowhead.webp" alt="Cow Head Skopo" class="food-img" loading="lazy">
+                <div class="food-info"><h3>Cow Head</h3><p>Skopo</p><span class="price-tag">R130.00</span></div>
+            </a>
         </div>
     </section>
 
@@ -259,9 +224,7 @@
         <h2 class="section-title" style="font-size: 2rem;"><span>FIND US</span></h2>
         <div class="footer-address">The Square Centre<br>Sunninghill, Sandton, 2157</div>
         <a href="tel:0786856636" class="footer-phone">078-685-6636</a>
-        <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3584.098485678438!2d28.06456731502672!3d-26.031572983515367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e9573f0f7f9f8b5%3A0x4c0b0c0c0c0c0c0c!2sThe%20Square%20Shopping%20Centre%2C%20Sunninghill!5e0!3m2!1sen!2sza!4v1620000000000!5m2!1sen!2sza" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-        </div>
+        <div class="map-container"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3584.098485678438!2d28.06456731502672!3d-26.031572983515367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e9573f0f7f9f8b5%3A0x4c0b0c0c0c0c0c0c!2sThe%20Square%20Shopping%20Centre%2C%20Sunninghill!5e0!3m2!1sen!2sza!4v1620000000000!5m2!1sen!2sza" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe></div>
         <div style="margin: 30px 0;">
             <a href="https://www.instagram.com/hotplate__2.0/" target="_blank" class="social-link">INSTAGRAM</a>
             <a href="https://www.tiktok.com/@hotpplate_2_0?is_from_webapp=1&sender_device=pc" target="_blank" class="social-link">TIKTOK</a>
@@ -269,53 +232,31 @@
         <p style="margin-top: 40px; font-size: 0.7rem; color: #444;">© 2024 Hot Plate 2.0. All Rights Reserved.</p>
     </footer>
 
-    <div id="imageModal" class="modal">
-        <span class="close" onclick="closeModal()">×</span>
-        <img class="modal-content" id="img01">
-    </div>
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script>
 
     <script>
-        // Scroll Animation
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
-                }
+                if (entry.isIntersecting) { entry.target.classList.add('show'); }
             });
         });
-        const hiddenElements = document.querySelectorAll('.hidden');
-        hiddenElements.forEach((el) => observer.observe(el));
+        document.querySelectorAll('.hidden').forEach((el) => observer.observe(el));
 
-        // Mobile Menu Toggle
         function toggleMenu() {
             var nav = document.getElementById("navLinks");
             var icon = document.querySelector(".hamburger");
             nav.classList.toggle("active");
-            
-            // Toggle Icon between Menu and Close (Optional visual cue)
-            if (nav.classList.contains("active")) {
-                icon.innerHTML = "✕"; // Close icon
-            } else {
-                icon.innerHTML = "☰"; // Hamburger icon
-            }
+            if (nav.classList.contains("active")) { icon.innerHTML = "✕"; } else { icon.innerHTML = "☰"; }
         }
 
-        // Lightbox
-        function openModal(element) {
-            var modal = document.getElementById("imageModal");
-            var modalImg = document.getElementById("img01");
-            modal.style.display = "block";
-            modalImg.src = element.src;
-        }
-        function closeModal() {
-            document.getElementById("imageModal").style.display = "none";
-        }
-        window.onclick = function(event) {
-            var modal = document.getElementById("imageModal");
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
+        lightGallery(document.getElementById('fav-gallery'), {
+            plugins: [lgZoom, lgThumbnail],
+            speed: 500,
+            selector: 'a',
+            mobileSettings: { controls: false, showCloseIcon: true, download: false }
+        });
     </script>
 
 </body>
