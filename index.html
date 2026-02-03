@@ -24,15 +24,15 @@
             position: fixed; width: 100%; top: 0; z-index: 1000;
             background: rgba(11, 46, 33, 0.98); border-bottom: 1px solid rgba(255,255,255,0.1);
         }
-        .nav-logo { font-size: 1.2rem; font-weight: 700; letter-spacing: 1px; z-index: 1001; }
+        .nav-logo { font-size: 1.2rem; font-weight: 700; letter-spacing: 1px; z-index: 1002; position: relative; }
         .nav-logo span { color: var(--neon-red); }
         
         .nav-links { display: flex; align-items: center; }
         .nav-links a { color: white; text-decoration: none; margin-left: 20px; font-size: 0.9rem; transition: 0.3s; }
         .nav-links a:hover { color: var(--slogan-red); }
         
-        /* HAMBURGER MENU ICON (Hidden on Desktop) */
-        .hamburger { display: none; font-size: 1.8rem; cursor: pointer; color: white; z-index: 1001; }
+        /* HAMBURGER ICON */
+        .hamburger { display: none; font-size: 1.8rem; cursor: pointer; color: white; z-index: 1002; position: relative; }
 
         .btn-order {
             background: transparent; border: 2px solid var(--slogan-red); color: var(--slogan-red);
@@ -75,7 +75,7 @@
         }
 
         /* --- FAN FAVORITES --- */
-        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; } /* Adjusted min-width for mobile */
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
         .food-card { padding: 25px; border-radius: 12px; transition: transform 0.3s ease; }
         
         .food-img { 
@@ -125,28 +125,37 @@
         .social-link { color: var(--slogan-red); font-size: 1rem; text-decoration: none; border: 1px solid var(--slogan-red); padding: 10px 20px; border-radius: 5px; display: inline-block; margin: 0 10px; transition: all 0.3s ease; }
         .map-container { margin: 30px auto; max-width: 600px; border: 2px solid var(--highlight-cream); border-radius: 12px; overflow: hidden; height: 250px; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
         
-        /* --- MOBILE OPTIMIZATION --- */
+        /* --- MOBILE OPTIMIZATION (TWEAKED) --- */
         @media (max-width: 768px) { 
             .hamburger { display: block; }
             
-            /* Mobile Navigation Dropdown */
+            /* Full Screen Mobile Menu */
             .nav-links {
-                display: none; /* Hidden by default */
-                position: absolute; top: 100%; left: 0; width: 100%;
-                flex-direction: column; background-color: #0B2E21;
-                padding: 20px 0; border-bottom: 2px solid var(--slogan-red);
+                display: none; /* Hidden */
+                position: fixed; /* Fixed to screen */
+                top: 0; left: 0; width: 100%; height: 100vh; /* Full Height */
+                flex-direction: column; 
+                justify-content: center; /* Center items vertically */
+                background-color: rgba(11, 46, 33, 0.98); /* Solid dark BG */
+                padding: 0; z-index: 1000;
             }
-            .nav-links.active { display: flex; } /* Shown via JS */
-            .nav-links a { margin: 10px 0; font-size: 1.2rem; }
-            .btn-order { margin-top: 15px; }
+            .nav-links.active { display: flex; }
+            .nav-links a { margin: 15px 0; font-size: 1.5rem; font-weight: 600; } /* Larger Touch Targets */
+            .btn-order { margin-top: 25px; transform: scale(1.2); }
 
-            .brand-title { font-size: 2.5rem; } 
-            .hero-slogan { font-size: 2rem; } 
+            /* Text Sizing Safety */
+            .brand-title { font-size: 2.8rem; } 
+            .hero-slogan { font-size: 1.8rem; } 
             
-            /* Reduce padding on mobile */
-            .menu-section, .about-section, .delivery-section, .specials-section { padding: 50px 5%; }
-            .section-title { font-size: 2rem; margin-bottom: 40px; }
-            .about-text { font-size: 1rem; padding: 25px; }
+            /* Tighter Spacing */
+            .menu-section, .about-section, .delivery-section, .specials-section { padding: 40px 5%; }
+            .section-title { font-size: 2rem; margin-bottom: 30px; }
+            .about-text { font-size: 1rem; padding: 25px; text-align: left; }
+
+            /* Reorder Specials: Video ON TOP of Text */
+            .specials-container { flex-direction: column-reverse; gap: 30px; }
+            .specials-content { min-width: 100%; border-left: none; border-top: 4px solid var(--slogan-red); }
+            .specials-visuals { min-width: 100%; }
         }
     </style>
 </head>
@@ -280,7 +289,15 @@
         // Mobile Menu Toggle
         function toggleMenu() {
             var nav = document.getElementById("navLinks");
+            var icon = document.querySelector(".hamburger");
             nav.classList.toggle("active");
+            
+            // Toggle Icon between Menu and Close (Optional visual cue)
+            if (nav.classList.contains("active")) {
+                icon.innerHTML = "✕"; // Close icon
+            } else {
+                icon.innerHTML = "☰"; // Hamburger icon
+            }
         }
 
         // Lightbox
