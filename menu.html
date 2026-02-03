@@ -25,17 +25,24 @@
         }
         
         .marble-surface { background-color: rgba(26, 26, 26, 0.95); border: 1px solid #333; padding: 25px; border-radius: 12px; }
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background: rgba(11, 46, 33, 0.95); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .nav-logo { font-size: 1.2rem; font-weight: 700; color: white; text-decoration: none; }
+        
+        /* NAVIGATION (Updated to match Index) */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: rgba(11, 46, 33, 0.95); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .nav-logo { font-size: 1.1rem; font-weight: 700; color: white; text-decoration: none; z-index: 1002; position: relative; }
         .nav-logo span { color: var(--neon-red); }
-        .back-link { color: var(--highlight-cream); text-decoration: none; border: 1px solid var(--highlight-cream); padding: 8px 20px; border-radius: 20px; }
+        
+        /* Nav Links / Hamburger logic from Index */
+        .nav-links { display: flex; align-items: center; }
+        .nav-links a { color: white; text-decoration: none; margin-left: 20px; font-size: 0.9rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--slogan-red); }
+        .hamburger { display: none; font-size: 1.5rem; cursor: pointer; color: white; z-index: 1002; position: relative; }
 
-        .page-header { text-align: center; padding: 100px 20px 50px; }
-        .page-title { font-size: 3rem; margin-bottom: 10px; font-family: 'Oswald', sans-serif; text-shadow: 0 0 10px #000; }
+        .page-header { text-align: center; padding: 80px 20px 40px; }
+        .page-title { font-size: 2.8rem; margin-bottom: 10px; font-family: 'Oswald', sans-serif; text-shadow: 0 0 10px #000; }
         .page-title span { border-bottom: 4px solid var(--slogan-red); }
 
-        .menu-category { padding: 40px 5%; max-width: 1200px; margin: 0 auto; }
-        .category-title { color: var(--highlight-cream); font-size: 2rem; margin-bottom: 5px; border-left: 5px solid var(--slogan-red); padding-left: 20px; text-shadow: 2px 2px 4px #000; font-family: 'Oswald', sans-serif; }
+        .menu-category { padding: 30px 5%; max-width: 1200px; margin: 0 auto; }
+        .category-title { color: var(--highlight-cream); font-size: 1.8rem; margin-bottom: 5px; border-left: 5px solid var(--slogan-red); padding-left: 20px; text-shadow: 2px 2px 4px #000; font-family: 'Oswald', sans-serif; }
         .category-subtitle { color: #aaa; font-size: 0.9rem; margin-bottom: 30px; padding-left: 25px; font-style: italic; }
         
         .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
@@ -43,17 +50,36 @@
         .item-name { font-weight: 600; color: #eee; }
         .item-price { font-family: 'Oswald', sans-serif; color: var(--highlight-cream); font-weight: 700; }
 
-        @media (max-width: 768px) { .menu-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) { 
+            .menu-grid { grid-template-columns: 1fr; }
+            .page-title { font-size: 2.2rem; }
+            .category-title { font-size: 1.6rem; }
+            .hamburger { display: block; }
+            .nav-links {
+                display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; 
+                flex-direction: column; justify-content: center; background-color: rgba(11, 46, 33, 0.98); 
+                padding: 0; z-index: 1000;
+            }
+            .nav-links.active { display: flex; }
+            .nav-links a { margin: 15px 0; font-size: 1.4rem; font-weight: 500; }
+        }
     </style>
 </head>
 <body>
     <video autoplay muted loop playsinline id="bg-video">
         <source src="videos/menu-bg.mp4" type="video/mp4">
     </video>
+    
     <nav>
         <a href="index.html" class="nav-logo"><span>HOT</span> PLATE 2.0</a>
-        <a href="index.html" class="back-link">← BACK HOME</a>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html" onclick="toggleMenu()">Home</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="index.html#find-us" onclick="toggleMenu()">Find Us</a>
+        </div>
     </nav>
+
     <header class="page-header">
         <h1 class="page-title"><span>FULL MENU</span></h1>
         <p style="color: #ddd; font-weight: bold;">Food & Drinks</p>
@@ -84,7 +110,7 @@
             <div class="marble-surface">
                 <h3 style="color:var(--slogan-red); margin-bottom:10px;">Mix 1</h3>
                 <p style="font-size:0.9rem; color:#ccc; margin-bottom:10px;">
-                    Mogodu, Cow Head, Cow Heels, Chicken feet with malana/Gizzards, Malana.
+                    Mogodu, Cow Head, Cow Heels, Chicken feet with Malana/Gizzards, Malana.
                 </p>
                 <span class="item-price" style="font-size:1.5rem;">R400</span>
             </div>
@@ -98,7 +124,7 @@
             <div class="marble-surface">
                 <h3 style="color:var(--slogan-red); margin-bottom:10px;">Mix 3</h3>
                 <p style="font-size:0.9rem; color:#ccc; margin-bottom:10px;">
-                    Chicken feet with malana/Gizzards, Lamb Trotter, Gizzard, Mogodu.
+                    Chicken feet with Malana/Gizzards, Lamb Trotter, Gizzard, Mogodu.
                 </p>
                 <span class="item-price" style="font-size:1.5rem;">R320</span>
             </div>
@@ -227,5 +253,14 @@
     <footer style="text-align:center; padding:50px; color:#666; font-size:0.8rem;">
         © 2024 Hot Plate 2.0. All Rights Reserved.
     </footer>
+
+    <script>
+        function toggleMenu() {
+            var nav = document.getElementById("navLinks");
+            var icon = document.querySelector(".hamburger");
+            nav.classList.toggle("active");
+            if (nav.classList.contains("active")) { icon.innerHTML = "✕"; } else { icon.innerHTML = "☰"; }
+        }
+    </script>
 </body>
 </html>

@@ -18,12 +18,12 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background-color: var(--bg-suede-green); color: var(--text-white); font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
         
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background: rgba(11, 46, 33, 0.95); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .nav-logo { font-size: 1.2rem; font-weight: 700; letter-spacing: 1px; color:white; text-decoration:none; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: rgba(11, 46, 33, 0.95); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .nav-logo { font-size: 1.1rem; font-weight: 700; letter-spacing: 1px; color:white; text-decoration:none; }
         .nav-logo span { color: var(--slogan-red); }
-        .back-link { color: var(--highlight-cream); text-decoration: none; border: 1px solid var(--highlight-cream); padding: 8px 20px; border-radius: 20px; transition: 0.3s; }
+        .back-link { color: var(--highlight-cream); text-decoration: none; border: 1px solid var(--highlight-cream); padding: 8px 20px; border-radius: 20px; transition: 0.3s; font-size: 0.9rem; }
 
-        .header-title { text-align: center; padding: 60px 20px; font-family: 'Oswald', sans-serif; font-size: 3rem; text-transform: uppercase; }
+        .header-title { text-align: center; padding: 50px 20px; font-family: 'Oswald', sans-serif; font-size: 2.5rem; text-transform: uppercase; }
         .header-title span { border-bottom: 4px solid var(--slogan-red); }
 
         .gallery-container { padding: 20px 5%; column-count: 5; column-gap: 15px; }
@@ -31,6 +31,7 @@
             display: inline-block; width: 100%; margin-bottom: 15px;
             border-radius: 8px; overflow: hidden; border: 1px solid #333;
             transition: transform 0.3s ease; text-decoration: none;
+            background-color: #1a1a1a; /* Placeholder to prevent layout jump */
         }
         .gallery-item:hover { transform: scale(1.02); border-color: var(--slogan-red); }
         .gallery-item img { width: 100%; height: auto; display: block; }
@@ -38,7 +39,10 @@
         .lg-backdrop { background-color: rgba(0,0,0,0.95) !important; }
 
         @media (max-width: 1200px) { .gallery-container { column-count: 3; } }
-        @media (max-width: 768px) { .gallery-container { column-count: 2; } .header-title { font-size: 2rem; padding: 40px 20px; } }
+        @media (max-width: 768px) { 
+            .gallery-container { column-count: 2; column-gap: 10px; } 
+            .header-title { font-size: 1.8rem; padding: 30px 20px; } 
+        }
     </style>
 </head>
 <body>

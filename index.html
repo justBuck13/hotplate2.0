@@ -6,7 +6,6 @@
     <title>Hot Plate 2.0 | Home</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css">
     <style>
-        /* --- FONTS & VARS --- */
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Oswald:wght@400;700&display=swap');
         :root {
             --bg-suede-green: #0B2E21; 
@@ -16,116 +15,100 @@
             --text-white: #f5f5f5; --uber-green: #06C167;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--bg-suede-green); color: var(--text-white); font-family: 'Montserrat', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--bg-suede-green); color: var(--text-white); font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
         h1, h2, h3 { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
 
-        /* --- NAVIGATION --- */
+        /* NAVIGATION */
         nav {
-            display: flex; justify-content: space-between; align-items: center; padding: 20px 5%;
+            display: flex; justify-content: space-between; align-items: center; padding: 15px 5%;
             position: fixed; width: 100%; top: 0; z-index: 1000;
             background: rgba(11, 46, 33, 0.98); border-bottom: 1px solid rgba(255,255,255,0.1);
         }
-        .nav-logo { font-size: 1.2rem; font-weight: 700; letter-spacing: 1px; z-index: 1002; position: relative; }
+        .nav-logo { font-size: 1.1rem; font-weight: 700; letter-spacing: 1px; z-index: 1002; position: relative; text-decoration: none; color: white; }
         .nav-logo span { color: var(--neon-red); }
-        
         .nav-links { display: flex; align-items: center; }
         .nav-links a { color: white; text-decoration: none; margin-left: 20px; font-size: 0.9rem; transition: 0.3s; }
         .nav-links a:hover { color: var(--slogan-red); }
-        
-        .hamburger { display: none; font-size: 1.8rem; cursor: pointer; color: white; z-index: 1002; position: relative; }
-
+        .hamburger { display: none; font-size: 1.5rem; cursor: pointer; color: white; z-index: 1002; position: relative; }
         .btn-order {
             background: transparent; border: 2px solid var(--slogan-red); color: var(--slogan-red);
-            padding: 10px 25px; font-weight: 600; border-radius: 50px; cursor: pointer; text-decoration: none; transition: all 0.3s ease;
+            padding: 8px 20px; font-weight: 600; border-radius: 50px; cursor: pointer; text-decoration: none; transition: all 0.3s ease; font-size: 0.85rem;
         }
         .btn-order:hover { background: var(--slogan-red); color: white; box-shadow: 0 0 15px var(--slogan-red); }
 
-        /* --- HERO SECTION (UPDATED TO WEBP) --- */
+        /* HERO SECTION */
         .hero {
             height: 100vh; 
             display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
             padding: 0 20px;
-            /* CHANGE: hero-bg.webp */
-            background: linear-gradient(rgba(11, 46, 33, 0.4), rgba(11, 46, 33, 0.6)), url('images/hero-bg.webp'); 
+            /* Updated Gradient: Lighter overlay for clearer image */
+            background: linear-gradient(rgba(11, 46, 33, 0.2), rgba(11, 46, 33, 0.4)), url('images/hero-bg.webp'); 
             background-size: cover; background-position: center; background-attachment: fixed; 
         }
-        
-        .brand-title { font-size: 4rem; margin-bottom: 20px; line-height: 1; letter-spacing: 5px; text-shadow: 0 0 20px rgba(0,0,0,0.8); }
+        .brand-title { font-size: 3.5rem; margin-bottom: 10px; line-height: 1; letter-spacing: 4px; text-shadow: 0 0 20px rgba(0,0,0,0.8); }
         .text-hot { color: var(--neon-red); text-shadow: 0 0 10px var(--neon-red), 0 0 20px var(--neon-red); }
         .text-plate { color: var(--highlight-cream); text-shadow: 0 0 10px var(--highlight-cream), 0 0 20px rgba(255,255,255,0.2); }
-        .hero-slogan { font-size: 4.5rem; color: var(--slogan-red); margin: 10px 0; letter-spacing: 2px; animation: textPulse 3s infinite alternate; }
+        .hero-slogan { font-size: 3rem; color: var(--slogan-red); margin: 10px 0; letter-spacing: 2px; animation: textPulse 3s infinite alternate; }
         @keyframes textPulse {
             0% { text-shadow: 0 0 5px var(--slogan-red), 0 0 15px var(--glow-cream); }
             100% { text-shadow: 0 0 10px var(--slogan-red), 0 0 30px var(--glow-cream), 0 0 50px var(--glow-cream); }
         }
 
-        /* --- SECTIONS --- */
-        .menu-section, .about-section, .delivery-section, .specials-section { padding: 80px 5%; }
-        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 60px; }
-        .section-title span { border-bottom: 3px solid var(--slogan-red); padding-bottom: 10px; }
+        /* SECTIONS & SCROLL FIX */
+        /* scroll-margin-top ensures the title isn't hidden behind the nav when clicked */
+        section { scroll-margin-top: 80px; }
         
-        .about-text { 
-            max-width: 900px; margin: 0 auto; text-align: center; line-height: 1.8; 
-            font-size: 1.1rem; color: #ddd; padding: 40px; border-radius: 12px; font-weight: 300;
-        }
-
+        .menu-section, .about-section, .delivery-section, .specials-section { padding: 60px 5%; }
+        .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 40px; }
+        .section-title span { border-bottom: 3px solid var(--slogan-red); padding-bottom: 10px; }
+        .about-text { max-width: 800px; margin: 0 auto; text-align: center; line-height: 1.6; font-size: 1rem; color: #ddd; padding: 30px; border-radius: 12px; font-weight: 300; }
+        
         .marble-surface {
             background-color: var(--marble-black);
             background-image: linear-gradient(135deg, var(--marble-black) 0%, var(--marble-grey) 50%, var(--marble-black) 100%);
             border: 1px solid #333; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        /* --- FAN FAVORITES --- */
-        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .food-card { padding: 25px; border-radius: 12px; transition: transform 0.3s ease; text-decoration: none; display: block; color: var(--text-white); }
-        
+        /* FAN FAVORITES */
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .food-card { 
+            padding: 20px; border-radius: 12px; text-decoration: none; display: block; color: var(--text-white); 
+            background-color: #1a1a1a; /* Placeholder color to reduce visual lag */
+        }
         .food-img { 
-            width: 100%; height: 300px; object-fit: cover; 
-            border-radius: 8px; margin-bottom: 20px; border: 1px solid #333;
-            cursor: zoom-in; transition: opacity 0.3s;
+            width: 100%; height: 250px; object-fit: cover; 
+            border-radius: 8px; margin-bottom: 15px; border: 1px solid #333;
+            background-color: #000; /* Placeholder while loading */
         }
-        
-        /* Mogodu Shift: 0.25% */
         .shift-mogodu { object-position: center 0.25%; } 
+        .food-info h3 { font-size: 1.3rem; margin-bottom: 5px; }
+        .food-info p { font-size: 0.85rem; color: #aaa; margin-bottom: 10px; font-style: italic; }
+        .price-tag { font-family: 'Oswald', sans-serif; font-size: 1.2rem; color: var(--highlight-cream); font-weight: 700; display: block; margin-top: 10px; }
 
-        .food-info h3 { font-size: 1.5rem; margin-bottom: 5px; }
-        .food-info p { font-size: 0.9rem; color: #aaa; margin-bottom: 15px; font-style: italic; }
-        .price-tag { font-family: 'Oswald', sans-serif; font-size: 1.4rem; color: var(--highlight-cream); font-weight: 700; display: block; margin-top: 10px; }
-
-        /* --- SPECIALS SECTION (UPDATED TO WEBP) --- */
-        .specials-section {
-            /* CHANGE: specials-bg.webp */
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/specials-bg.webp');
-            background-size: cover; background-position: center; background-attachment: scroll; 
-        }
+        /* SPECIALS */
+        .specials-section { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/specials-bg.webp'); background-size: cover; background-position: center; }
         .specials-container { display: flex; flex-wrap: wrap; gap: 40px; align-items: center; justify-content: center; }
-        .specials-content { 
-            flex: 2; min-width: 300px; text-align: left; padding: 30px;
-            background: rgba(0,0,0,0.6); border-radius: 12px; border-left: 4px solid var(--slogan-red); backdrop-filter: blur(5px);
-        }
+        .specials-content { flex: 2; min-width: 300px; padding: 30px; background: rgba(0,0,0,0.6); border-radius: 12px; border-left: 4px solid var(--slogan-red); backdrop-filter: blur(5px); }
         .specials-visuals { flex: 1; min-width: 300px; display: flex; justify-content: center; }
-        .specials-item {
-            width: 100%; max-width: 350px; aspect-ratio: 9 / 16;
-            border-radius: 12px; overflow: hidden; border: 2px solid var(--highlight-cream);
-            box-shadow: 0 0 20px rgba(0,0,0,0.5); background: #000;
-        }
+        .specials-item { width: 100%; max-width: 350px; aspect-ratio: 9 / 16; border-radius: 12px; overflow: hidden; border: 2px solid var(--highlight-cream); background: #000; }
         .specials-item video { width: 100%; height: 100%; object-fit: cover; }
 
-        /* lightGallery Backdrop */
+        /* LIGHTBOX */
         .lg-backdrop { background-color: rgba(0,0,0,0.95) !important; }
 
-        /* --- ANIMATIONS --- */
-        .hidden { opacity: 0; transform: translateY(50px); transition: all 1s ease; }
+        /* FOOTER */
+        footer { padding: 40px 5%; background-color: #051610; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); }
+        .footer-address { font-size: 1rem; color: var(--highlight-cream); margin-bottom: 10px; font-family: 'Oswald', sans-serif; letter-spacing: 1px; }
+        .footer-phone { font-size: 1rem; color: #fff; margin-bottom: 20px; font-weight: bold; display: block; text-decoration: none; }
+        .social-link { color: var(--slogan-red); font-size: 0.9rem; text-decoration: none; border: 1px solid var(--slogan-red); padding: 8px 15px; border-radius: 5px; display: inline-block; margin: 0 5px; transition: all 0.3s ease; }
+        .map-container { margin: 20px auto; max-width: 600px; border: 2px solid var(--highlight-cream); border-radius: 12px; overflow: hidden; height: 250px; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
+        
+        /* ANIMATIONS */
+        .hidden { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
         .show { opacity: 1; transform: translateY(0); }
 
-        /* --- FOOTER --- */
-        footer { padding: 60px 5%; background-color: #051610; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); }
-        .footer-address { font-size: 1.2rem; color: var(--highlight-cream); margin-bottom: 10px; font-family: 'Oswald', sans-serif; letter-spacing: 1px; }
-        .footer-phone { font-size: 1.1rem; color: #fff; margin-bottom: 20px; font-weight: bold; display: block; text-decoration: none; }
-        .social-link { color: var(--slogan-red); font-size: 1rem; text-decoration: none; border: 1px solid var(--slogan-red); padding: 10px 20px; border-radius: 5px; display: inline-block; margin: 0 10px; transition: all 0.3s ease; }
-        .map-container { margin: 30px auto; max-width: 600px; border: 2px solid var(--highlight-cream); border-radius: 12px; overflow: hidden; height: 250px; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
-        
-        /* --- MOBILE OPTIMIZATION --- */
+        /* --- MOBILE OPTIMIZATION (Professional & Not Zoomed) --- */
         @media (max-width: 768px) { 
             .hamburger { display: block; }
             .nav-links {
@@ -134,23 +117,31 @@
                 padding: 0; z-index: 1000;
             }
             .nav-links.active { display: flex; }
-            .nav-links a { margin: 15px 0; font-size: 1.5rem; font-weight: 600; }
-            .btn-order { margin-top: 25px; transform: scale(1.2); }
-            .brand-title { font-size: 2.8rem; } 
-            .hero-slogan { font-size: 1.8rem; } 
-            .menu-section, .about-section, .delivery-section, .specials-section { padding: 40px 5%; }
-            .section-title { font-size: 2rem; margin-bottom: 30px; }
-            .about-text { font-size: 1rem; padding: 25px; text-align: left; }
-            .specials-container { flex-direction: column-reverse; gap: 30px; }
-            .specials-content { min-width: 100%; border-left: none; border-top: 4px solid var(--slogan-red); }
+            .nav-links a { margin: 15px 0; font-size: 1.3rem; font-weight: 500; }
+            .btn-order { margin-top: 25px; transform: scale(1.1); }
+            
+            /* Smaller Font Sizes for Mobile */
+            .brand-title { font-size: 2.2rem; letter-spacing: 2px; } 
+            .hero-slogan { font-size: 1.5rem; } 
+            .section-title { font-size: 1.8rem; margin-bottom: 25px; }
+            .about-text { font-size: 0.95rem; padding: 20px; text-align: left; }
+            
+            /* Tighter Spacing */
+            .menu-section, .about-section, .delivery-section, .specials-section { padding: 30px 5%; }
+            
+            /* Reorder Specials: Video ON TOP */
+            .specials-container { flex-direction: column-reverse; gap: 20px; }
+            .specials-content { min-width: 100%; border-left: none; border-top: 3px solid var(--slogan-red); padding: 20px; }
             .specials-visuals { min-width: 100%; }
+            .specials-content h3 { font-size: 1.8rem !important; }
+            .specials-content h4 { font-size: 1.2rem !important; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="nav-logo"><span>HOT</span> PLATE 2.0</div>
+        <a href="#" class="nav-logo"><span>HOT</span> PLATE 2.0</a>
         <div class="hamburger" onclick="toggleMenu()">☰</div>
         <div class="nav-links" id="navLinks">
             <a href="#about" onclick="toggleMenu()">Our Story</a>
@@ -165,8 +156,8 @@
     <section class="hero">
         <h1 class="brand-title hidden"><span class="text-hot">HOT</span> <span class="text-plate">PLATE 2.0</span></h1>
         <h2 class="hero-slogan hidden">SEKuRGHT UKUDLA</h2>
-        <div style="margin-top: 60px;" class="hidden">
-            <a href="menu.html" class="btn-order" style="padding: 15px 40px; font-size: 1.2rem; background-color: rgba(0,0,0,0.5);">VIEW FULL MENU</a>
+        <div style="margin-top: 40px;" class="hidden">
+            <a href="menu.html" class="btn-order" style="padding: 12px 30px;">VIEW FULL MENU</a>
         </div>
     </section>
 
@@ -183,10 +174,10 @@
             <div class="specials-content">
                 <h3 style="font-size: 2.5rem; color: var(--highlight-cream); margin-bottom: 10px;">AFTER WORK SPECIAL</h3>
                 <h4 style="font-size: 1.5rem; color: var(--slogan-red); margin-bottom: 20px;">EVERY THURSDAY</h4>
-                <div style="font-size: 1.1rem; line-height: 1.8; color: #ddd;">
-                    <p style="margin-bottom: 15px;"><strong>UNWIND AFTER A LONG DAY AT HOT PLATE!</strong><br>Enjoy <strong>Buy One, Get One Free</strong> on selected cocktails.</p>
+                <div style="font-size: 1rem; line-height: 1.6; color: #ddd;">
+                    <p style="margin-bottom: 15px;"><strong>UNWIND AFTER A LONG DAY!</strong><br>Enjoy <strong>Buy One, Get One Free</strong> on selected cocktails.</p>
                     <p style="margin-bottom: 15px;">Paired with great music and authentic South African cuisine.</p>
-                    <p style="margin-bottom: 15px; color: var(--highlight-cream);"><strong>⏰ 5PM – 7PM</strong><br>SIP, SAVOUR, AND EASE INTO THE EVENING YOU’VE EARNED.</p>
+                    <p style="margin-bottom: 15px; color: var(--highlight-cream);"><strong>⏰ 5PM – 7PM</strong></p>
                     <p style="font-style: italic; color: #aaa;">"Where the weekend starts early."</p>
                 </div>
                 <br>
@@ -221,15 +212,17 @@
     </section>
 
     <footer id="find-us" class="hidden">
-        <h2 class="section-title" style="font-size: 2rem;"><span>FIND US</span></h2>
+        <h2 class="section-title" style="font-size: 1.8rem;"><span>FIND US</span></h2>
         <div class="footer-address">The Square Centre<br>Sunninghill, Sandton, 2157</div>
         <a href="tel:0786856636" class="footer-phone">078-685-6636</a>
-        <div class="map-container"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3584.098485678438!2d28.06456731502672!3d-26.031572983515367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e9573f0f7f9f8b5%3A0x4c0b0c0c0c0c0c0c!2sThe%20Square%20Shopping%20Centre%2C%20Sunninghill!5e0!3m2!1sen!2sza!4v1620000000000!5m2!1sen!2sza" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe></div>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3584.6033628793043!2d28.06649731502693!3d-26.04632198350831!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e957303c73738b5%3A0x1c276335d0a6239a!2sThe%20Square%20Shopping%20Centre!5e0!3m2!1sen!2sza!4v1675123456789!5m2!1sen!2sza" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
         <div style="margin: 30px 0;">
             <a href="https://www.instagram.com/hotplate__2.0/" target="_blank" class="social-link">INSTAGRAM</a>
             <a href="https://www.tiktok.com/@hotpplate_2_0?is_from_webapp=1&sender_device=pc" target="_blank" class="social-link">TIKTOK</a>
         </div>
-        <p style="margin-top: 40px; font-size: 0.7rem; color: #444;">© 2024 Hot Plate 2.0. All Rights Reserved.</p>
+        <p style="margin-top: 30px; font-size: 0.7rem; color: #444;">© 2024 Hot Plate 2.0. All Rights Reserved.</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.min.js"></script>
@@ -258,6 +251,5 @@
             mobileSettings: { controls: false, showCloseIcon: true, download: false }
         });
     </script>
-
 </body>
 </html>
